@@ -1,0 +1,28 @@
+git commands
+
+cd DIRECTORY - on the command window you access the desired location
+then use mkdir, then use git init...
+
+git init - Initialize the repository
+git remote add origin URL - connect to the github repository
+git status - check status of your current repository (use it frequently for debugging)
+mkdir FOLDER NAME - create a new folder
+cd FOLDER NAME - you go to the desired folder
+touch FILE NAME - create a file
+git add FILE NAME - Add the current file to staging mode
+git add . - Add all files on specified folder to staging mode
+git commit -am (add message)
+git remote -v (check if your folder is connected to github)
+git push origin master - the final step to upload the changes to your repository
+git push origin NAME - pushes the changes from your current branch to your repository
+git branch - shows all available branches in your repository
+git branch NAME - creates a new branch to be worked on identical to the master branch
+git checkout NAME - switch between available branches to the branch you choose on NAME
+git merge NAME - it merges the changes in the file you were editing with your master file on your repository
+git pull (ORIGIN NAME) - brings everything on master branch to my local computer
+git clone URL - use this command in case you delete your code from your computer. Go to your repository,
+copy the URL from CODE button and use the command with the URL to recover the files that were commited
+rm FILE NAME - removes the desired file name from your computer
+
+
+

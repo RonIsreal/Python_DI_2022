@@ -1,0 +1,58 @@
+MONOPOLY GAME PERSONAL PROJECT
+
+So far the best way to do this that I can think of is using classes. 
+
+Country Tiles - do a list all_tiles that will contain a dictionary of tiles
+	      - each tile will be a dictionary with values:
+	      - "color_group": list will all countries under the same color. if all properties owned by same player, then construction is available and no house rent is doubled
+	      - "name": string
+	      - "tile_position": int - will range from 1 until 40 (1 is start, 11 is prison, 21 is parking, 31 is send to prison, 39 is parking_fee
+	      - "tile_cost": cost of the country
+	      - "construction": int (zero by default. if a house is built, construction += 1. max int = 5)
+	      - "rent": int (how much a player has to pay when landing on the tile, if owned by another player. get the amount from the construction list)
+	      - "player_owner": will be filled if a player bought the tile. If owned, will check the contrusctions and rent cost
+	      - "mortgage": False by default. If a player mortgages his tile, then change it to true and deactivate rent. if it has construction, can't be mortgaged (add half of tile_cost value to player's money)
+	      - "redeem": method that will check if "mortgage" is True or False. If True, check if player's money >= tile_cost / 2. If True, then deduct the amount and set "mortgage" to False.
+	      - "house_cost": int (cost to build a house/hotel)
+	      - "house_sell": "house_cost" / 2. if a house is sold, construction -= 1. while construction >= 1, can sell.
+	      
+Card tiles and roulette - each bonus tile will be a dictionary of its own
+	   - each possible card will be in a list with keyword and values and an identificator number. the card will be picked using random.randint(1,x)
+
+Parking, Parking Fee, Prison and Start tiles - each will be a dictionary of its own
+	   - Start is neutral, parking has a vault to collect money from parking fee.
+	     value = 0 by default and adds according to players landing on the parking fee tile.
+	   - first player that lands on parking while money is stored gets the money
+	   - parking fee tile - deducts $100 from the player that landed on it
+	   - landing on prison by default does nothing, but if sent to prison then lose 3 turns or until a double is rolled
+	   - think of a way to count the turns arrested and do a condition that if dice is double rolled, player is out. or if player chooses to pay $100
+	   - send to prison tile: if a player lands on it, it gets sent to jail
+
+Transport tiles - each will be a dictionary of it own similar to countries, but no construction available
+		- if a player owns more than 1 transport, he can travel between them.
+		- rent is calculated according to the amount of tiles owned. 
+		- rent for 1: 25, rent for 2: 50, rent for 3: 100, rent for 4: 200
+		- if mortgaged, doesn't count on rent calculation and player that owns it can't travel there
+
+players - start as an empty list and ask for input from the user to add the players. while len(list) < 7, ask for input
+	- if the user gives the input "finished" then exit the loop
+	- create a list with the available colors and every time a player adds another participant, assign a random color to that player
+	  by using colors.pop()
+	- when a player is created, he'll be a dictionary with the values:
+	- "name": string - name of the player
+	- "color": value obtained from colors.pop() method
+	- "money": int - available money. if by the end of turn the value is less than 0, then the player is bankrupt and out
+	- "owned_lands" - SHOULD I USE THIS OR MAYBE JUST LEAVE THE TILE INFO ON THE COUNTRY_TILES LIST?
+
+FUNCTIONALITY
+
+roll dice - create 2 dice objects which will generate a random value between 1 and 6.
+player_move - sum the values of both dice and proceed forward
+roll_doubles - if value dice1 == value dice2, roll_dice. add a consecutive_roll_count variable. 
+	       each consecutive roll += 1. if consecutive_roll_count == 3, send player to jail
+land_on_tile - check if the tile is owned by a player. if it is, pay_rent (calculated according to construction and all colors)
+buy_land - if the tile is available, ask if the player would like to buy or not. if money < cost, open Auction to all players, including the one who started it
+auction - NO IDEA HOW TO DO THIS. Can be done though. Think about it when you are more focused.
+player_sell - Enables the player to open a trade with a desired opponent and offers to sell his lands or buy the opponents. Select the land and input an offer. Land to trade allowed
+finish_turn - asks if the player is finished. if yes then move onto the next player to roll the dice
+
