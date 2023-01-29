@@ -1,0 +1,28 @@
+{
+   "items": [
+      {
+         "name": "Vegetable soup",
+         "price": 30
+      },
+      {
+         "name": "Hamburger",
+         "price": 44.9
+      },
+      {
+         "name": "Beef stew",
+         "price": 52.5
+      },
+      {
+         "name": "Chocolate Cake",
+         "price": 15.9
+      },
+      {
+         "name": "Coffee Cake",
+         "price": 13.9
+      },
+      {
+         "name": "Cheeseburger",
+         "price": 49.9
+      }
+   ]
+}
