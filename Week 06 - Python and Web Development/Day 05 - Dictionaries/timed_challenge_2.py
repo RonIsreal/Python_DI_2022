@@ -10,7 +10,8 @@ domain wrong a entered have You
 
 def reverse_input():
   user_input = input('Please write a sentence: ')
-  words_list = list(user_input.split(' '))
+  words_list = user_input.split(' ')
   words_list.reverse()
-  return(words_list)
+  reverse_sentence = " ".join(words_list)
+  return(reverse_sentence)
 print(reverse_input())

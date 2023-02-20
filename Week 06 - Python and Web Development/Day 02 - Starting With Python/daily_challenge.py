@@ -22,20 +22,18 @@ Hlrolelwod
 '''
 import random
 
-strg = input("Please write something in 10 characters (spaces count too)")
+strg = input("Please write something in 10 characters (spaces count too): ")
 i = 0
 if len(strg) < 10:
   print("Your text is too short")
 elif len(strg) > 10:
   print("Your text is too long")
 else:
-  print(f"First letter: {strg[0]}")
-while i < len(strg):
-	print(strg[i] + strg[i + 1])
-	i += 1
+  print(f"First letter: {strg[0]}\nLast Letter: {strg[-1]}")
+for i in range(len(strg)):
+    print(strg[:i+1])
 strg_list = list(strg)
 random.shuffle(strg_list)
 mix_strg = "".join(strg_list)
 print(mix_strg)
 
-#PENDING CORRECTION THIRD PART ONLY

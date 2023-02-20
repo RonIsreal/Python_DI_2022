@@ -62,19 +62,12 @@ print(f"My list summed: {sum(mynumbers)}")
 
 print(f"First and last numbers in my list: {[mynumbers[0], mynumbers[-1]]}")
 
-toplist = []
-lowerlist = []
-for number in mynumbers:
-  if number > 50:
-    toplist.append(number)
-  else:
-    lowerlist.append(number)
+toplist = [i for i in mynumbers if i > 50]
+lowerlist = [i for i in mynumbers if i <= 50]
 print(f"Numbers lower than 50 in my list: {lowerlist}")
 print(f"Numbers higher than 50 in my list: {toplist}")
 
-squaredlist = []
-for number in mynumbers:
-  squaredlist.append(number**2)
+squaredlist = [i**2 for i in mynumbers]
 print(f"Numbers in my list squared: {squaredlist}")
 
 list_set = set(mynumbers)
@@ -125,10 +118,7 @@ print(f"There are {words} words in this paragraph.")
 unique_words = set(paragraph)
 print(f"There are {len(unique_words)} unique words in this paragraph.")
 
-paragraph_nospaces = []
-for letter in paragraph:
-  if letter != " ":
-    paragraph_nospaces.append(letter)
+paragraph_nospaces = [letter for letter in paragraph if letter != " "]
 print(f"There are {len(paragraph_nospaces)} characters (not counting white space) in this paragraph.")
 
 words_list = list(paragraph.split(" "))

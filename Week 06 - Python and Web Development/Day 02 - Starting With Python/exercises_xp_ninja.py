@@ -22,29 +22,15 @@ Keep asking the user to input the longest sentence they can without the characte
 Each time a user successfully sets a new longest sentence, print a congratulations message.
 '''
 
-def no_a():
+previous_sentence = ""
 
-	my_input = input("Please write the longest sentence or word you can without using the letter 'A': ")
-	input_length = len(my_input)
-	last_length = 0
-	repeat = True
-	for letter in my_input.lower():
-		if letter == 'a':
-			repeat == False
-			print('Busted!')
-			break
-		else:
-			if input_length > last_length:
-				print("Nice!")
-				last_length = len(my_input)
-				if repeat == True:
-					no_a()
-				else:
-					pass
-	print(input_length)
-
-
-
-
-
-no_a()
+while True:
+    current_sentence = input("Enter a sentence without the letter 'A': ")
+    if "a" not in current_sentence.lower():
+        if len(current_sentence) > len(previous_sentence):
+            print("Congratulations! You have set a new longest sentence without the letter 'A'.")
+            previous_sentence = current_sentence
+        else:
+            print("The sentence is not longer than the previous one. Please try again.")
+    else:
+        print("The sentence contains the letter 'A'. Busted!")
